@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:project_news_student/features/auth/screens/login_screen.dart';
 import 'package:project_news_student/features/auth/screens/signup_screen.dart';
+import 'package:project_news_student/features/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:project_news_student/features/onboarding/screens/onboarding_screen.dart';
 import 'package:project_news_student/shared/app_elements/app_colors.dart';
 import 'package:project_news_student/shared/app_elements/app_texts.dart';

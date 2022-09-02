@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:project_news_student/features/auth/screens/signup_screen.dart';
+import 'package:project_news_student/features/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:project_news_student/shared/app_elements/app_colors.dart';
 import 'package:project_news_student/shared/app_elements/app_constants.dart';
 import 'package:project_news_student/shared/app_elements/app_images.dart';
@@ -138,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onTap: () {
                     if (_loginFormKey.currentState!.validate()) {
                       // sign up user
-                      // navigate to home screen
+                      Navigator.pushNamed(context, BottomNavBar.routeName);
                     }
                   },
                 ),
@@ -159,7 +160,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           text: AppTexts.signUpClickText,
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              Navigator.pushNamed(context, SignUpScreen.routeName);
+                              Navigator.pushNamed(
+                                  context, SignUpScreen.routeName);
                             },
                           style: TextStyle(
                             color: AppColors.primaryBlue,

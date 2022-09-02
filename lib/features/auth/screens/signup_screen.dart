@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:project_news_student/features/auth/screens/login_screen.dart';
+import 'package:project_news_student/features/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:project_news_student/shared/app_elements/app_colors.dart';
 import 'package:project_news_student/shared/app_elements/app_constants.dart';
 import 'package:project_news_student/shared/app_elements/app_images.dart';
@@ -134,7 +135,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       },
                       suffixIcon: GestureDetector(
                         onTap:
-                            passwordVisibility, //call this method when contact with screen is removed
+                            passwordVisibility, 
                         child: Icon(
                           Icons.remove_red_eye,
                           color: isPasswordInvisible == true
@@ -182,7 +183,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   onTap: () {
                     if (_signUpFormKey.currentState!.validate()) {
                       // sign up user
-                      // navigate to home screen
+                      Navigator.pushNamed(context, BottomNavBar.routeName);
                     }
                   },
                 ),
