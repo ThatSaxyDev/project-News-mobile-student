@@ -1,0 +1,46 @@
+import 'package:flutter/material.dart';
+import 'package:project_news_student/features/auth/screens/login_screen.dart';
+import 'package:project_news_student/features/auth/screens/signup_screen.dart';
+import 'package:project_news_student/features/onboarding/screens/onboarding_screen.dart';
+
+Route<dynamic> generateRoute(RouteSettings routeSettings) {
+  switch (routeSettings.name) {
+    case SignUpScreen.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const SignUpScreen(),
+      );
+    case OnboardingScreen.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const OnboardingScreen(),
+      );
+    case LoginScreen.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const LoginScreen(),
+      );
+    // case BottomNavBar.routeName:
+    //   return MaterialPageRoute(
+    //     settings: routeSettings,
+    //     builder: (_) => const BottomNavBar(),
+    //   );
+    //   );
+    // case SearchScreen.routeName:
+    //   var searchQuery = routeSettings.arguments as String;
+    //   return MaterialPageRoute(
+    //     settings: routeSettings,
+    //     builder: (_) => SearchScreen(
+    //       searchQuery: searchQuery,
+    //     ),
+    //   );
+    default:
+      return MaterialPageRoute(
+        builder: (_) => const Scaffold(
+          body: Center(
+            child: Text('Screen does not exist'),
+          ),
+        ),
+      );
+  }
+}

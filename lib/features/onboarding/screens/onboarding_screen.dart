@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:project_news_student/features/auth/screens/signup_screen.dart';
 import 'package:project_news_student/features/onboarding/widgets/gradient_button.dart';
 import 'package:project_news_student/features/onboarding/widgets/onboarding_item.dart';
 import 'package:project_news_student/shared/app_elements/app_colors.dart';
@@ -9,6 +10,7 @@ import 'package:project_news_student/shared/widgets/spacer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingScreen extends StatefulWidget {
+  static const String routeName = '/onboarding-screen';
   const OnboardingScreen({Key? key}) : super(key: key);
 
   @override
@@ -46,7 +48,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
                 child: TextButton(
                   onPressed: () {
-                    // navigate to sign up
+                    Navigator.pushNamed(context, SignUpScreen.routeName);
                   },
                   child: Text(
                     AppTexts.skip,
@@ -115,7 +117,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     page++;
                   });
                 } else {
-                  // navigate to sign up
+                  Navigator.pushNamed(context, SignUpScreen.routeName);
                 }
               },
             ),

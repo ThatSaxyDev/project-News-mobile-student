@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:project_news_student/features/auth/screens/login_screen.dart';
+import 'package:project_news_student/features/auth/screens/signup_screen.dart';
 import 'package:project_news_student/shared/app_elements/app_colors.dart';
 import 'package:project_news_student/shared/app_elements/app_constants.dart';
 import 'package:project_news_student/shared/app_elements/app_images.dart';
@@ -10,25 +10,22 @@ import 'package:project_news_student/shared/widgets/button.dart';
 import 'package:project_news_student/shared/widgets/spacer.dart';
 import 'package:project_news_student/shared/widgets/text_input.dart';
 
-class SignUpScreen extends StatefulWidget {
-  static const String routeName = '/signup-screen'; 
-  const SignUpScreen({Key? key}) : super(key: key);
+class LoginScreen extends StatefulWidget {
+  static const String routeName = '/login-screen';
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
-  String selectedSchool = schools[0];
-  final _signUpFormKey = GlobalKey<FormState>();
-  final TextEditingController _nameController = TextEditingController();
+class _LoginScreenState extends State<LoginScreen> {
+  final _loginFormKey = GlobalKey<FormState>();
   final TextEditingController _studentEmailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool isPasswordInvisible = true;
 
   @override
   void dispose() {
-    _nameController.dispose();
     _studentEmailController.dispose();
     _passwordController.dispose();
     super.dispose();
@@ -61,7 +58,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
           ),
           child: Form(
-            key: _signUpFormKey,
+            key: _loginFormKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -72,9 +69,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   height: 150.h,
                   child: Image.asset(AppImages.schoolLogo),
                 ),
-                Spc(h: 50.h),
+                Spc(h: 120.h),
+
+                // welcome
                 Text(
-                  AppTexts.welcome,
+                  AppTexts.hey,
                   style: TextStyle(
                       fontSize: 30.sp,
                       fontWeight: FontWeight.w700,
@@ -82,26 +81,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 Spc(h: 5.h),
                 Text(
-                  AppTexts.welcomeMessage,
+                  AppTexts.heyMessage,
                   style: TextStyle(
                       fontSize: 15.sp,
                       fontWeight: FontWeight.w500,
                       color: AppColors.neutralWhite),
                 ),
                 Spc(h: 20.h),
-
-                //name input
-                TextInputBox(
-                  hintText: AppTexts.nameHintText,
-                  controller: _nameController,
-                  validator: (val) {
-                    if (val == null || val.isEmpty) {
-                      return AppTexts.nameError;
-                    }
-                    return null;
-                  },
-                ),
-                Spc(h: 15.h),
 
                 // email input
                 TextInputBox(
@@ -133,8 +119,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         return null;
                       },
                       suffixIcon: GestureDetector(
-                        onTap:
-                            passwordVisibility, //call this method when contact with screen is removed
+                        onTap: passwordVisibility,
                         child: Icon(
                           Icons.remove_red_eye,
                           color: isPasswordInvisible == true
@@ -145,65 +130,36 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ],
                 ),
-                Spc(h: 20.h),
+                Spc(h: 120.h),
 
-                // select school
-                SizedBox(
-                  height: 48.h,
-                  width: MediaQuery.of(context).size.width * 0.7,
-                  child: DropdownButton(
-                    onChanged: (String? newVal) {
-                      setState(() {
-                        selectedSchool = newVal!;
-                      });
-                    },
-                    value: selectedSchool,
-                    icon: const Icon(Icons.keyboard_arrow_down),
-                    items: schools.map((String item) {
-                      return DropdownMenuItem(
-                        value: item,
-                        child: Text(
-                          item,
-                          overflow: TextOverflow.fade,
-                          softWrap: false,
-                          style: TextStyle(
-                            fontSize: 12.5.sp,
-                          ),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                ),
-                Spc(h: 30.h),
-
-                // sign up button
+                // login button
                 Button(
-                  title: AppTexts.signUpButtonText,
+                  title: AppTexts.loginButtonText,
                   onTap: () {
-                    if (_signUpFormKey.currentState!.validate()) {
+                    if (_loginFormKey.currentState!.validate()) {
                       // sign up user
                       // navigate to home screen
                     }
                   },
                 ),
 
-                //! to login screen
+                //! to sign up screen
                 Spc(h: 40.h),
                 Align(
                   alignment: Alignment.center,
                   child: RichText(
                     text: TextSpan(
-                      text: AppTexts.alreadyHaveAccountText,
+                      text: AppTexts.dontHaveAccountText,
                       style: TextStyle(
                         color: AppColors.grey,
                         fontSize: 15.sp,
                       ),
                       children: <TextSpan>[
                         TextSpan(
-                          text: AppTexts.loginClickText,
+                          text: AppTexts.signUpClickText,
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              Navigator.pushNamed(context, LoginScreen.routeName);
+                              Navigator.pushNamed(context, SignUpScreen.routeName);
                             },
                           style: TextStyle(
                             color: AppColors.primaryBlue,

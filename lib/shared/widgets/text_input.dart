@@ -26,6 +26,9 @@ class TextInputBox extends StatelessWidget {
       obscureText: obscuretext,
       cursorColor: Colors.black,
       decoration: InputDecoration(
+        errorStyle: TextStyle(
+          fontSize: 12.sp
+        ),
         suffixIcon: suffixIcon,
         // labelText: hintText,
         // labelStyle: TextStyle(
