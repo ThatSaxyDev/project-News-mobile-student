@@ -28,34 +28,36 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // backgroundColor: AppColors.blue02,
-      body: pages[_page],
-      bottomNavigationBar: CurvedNavigationBar(
-        height: 75.h,
-        backgroundColor: AppColors.neutralWhite,
-        color: AppColors.blue02,
-        buttonBackgroundColor: AppColors.blue02,
-        animationCurve: Curves.easeInOut,
-        animationDuration: const Duration(milliseconds: 400),
-        onTap: updatePage,
-        items: const [
-          Icon(
-            Icons.home,
-            color: AppColors.neutralWhite,
-           
-          ),
-          Icon(
-            Icons.favorite,
-            color: AppColors.neutralWhite,
-            
-          ),
-          Icon(
-            Icons.person,
-            color: AppColors.neutralWhite,
-            
-          ),
-        ],
+    return WillPopScope(
+      onWillPop: () async {
+        return false;
+      },
+      child: Scaffold(
+        // backgroundColor: AppColors.blue02,
+        body: pages[_page],
+        bottomNavigationBar: CurvedNavigationBar(
+          height: 75.h,
+          backgroundColor: AppColors.neutralWhite,
+          color: AppColors.blue02,
+          buttonBackgroundColor: AppColors.blue02,
+          animationCurve: Curves.easeInOut,
+          animationDuration: const Duration(milliseconds: 400),
+          onTap: updatePage,
+          items: const [
+            Icon(
+              Icons.home,
+              color: AppColors.neutralWhite,
+            ),
+            Icon(
+              Icons.favorite,
+              color: AppColors.neutralWhite,
+            ),
+            Icon(
+              Icons.person,
+              color: AppColors.neutralWhite,
+            ),
+          ],
+        ),
       ),
     );
   }
