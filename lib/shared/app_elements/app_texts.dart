@@ -30,6 +30,13 @@ abstract class AppTexts {
   static const String emailErrorValidate = 'This is not a valid student email';
   static const String passwordError = 'Enter your password';
   static const String emailValidator = '@student.babcock.edu.ng';
+
+  // login texts
+  static const String hey = 'Hey';
+  static const String heyMessage = 'It\'s good to have you back';
+  static const String dontHaveAccountText = 'Don\'t have an account? ';
+  static const String signUpClickText = 'Sign up';
+  static const String loginButtonText = 'L O G I N';
 }
 
 List<String> schools = [
