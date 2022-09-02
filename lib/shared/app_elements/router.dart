@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_news_student/features/auth/screens/login_screen.dart';
 import 'package:project_news_student/features/auth/screens/signup_screen.dart';
+import 'package:project_news_student/features/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:project_news_student/features/onboarding/screens/onboarding_screen.dart';
 
 Route<dynamic> generateRoute(RouteSettings routeSettings) {
@@ -20,12 +21,12 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => const LoginScreen(),
       );
-    // case BottomNavBar.routeName:
-    //   return MaterialPageRoute(
-    //     settings: routeSettings,
-    //     builder: (_) => const BottomNavBar(),
-    //   );
-    //   );
+    case BottomNavBar.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const BottomNavBar(),
+      );
+
     // case SearchScreen.routeName:
     //   var searchQuery = routeSettings.arguments as String;
     //   return MaterialPageRoute(
