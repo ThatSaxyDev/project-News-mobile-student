@@ -5,12 +5,21 @@ import 'package:project_news_student/features/auth/screens/login_screen.dart';
 import 'package:project_news_student/features/auth/screens/signup_screen.dart';
 import 'package:project_news_student/features/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:project_news_student/features/onboarding/screens/onboarding_screen.dart';
+import 'package:project_news_student/providers/user_provider.dart';
 import 'package:project_news_student/shared/app_elements/app_colors.dart';
 import 'package:project_news_student/shared/app_elements/app_texts.dart';
 import 'package:project_news_student/shared/app_elements/router.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => UserProvider())
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
