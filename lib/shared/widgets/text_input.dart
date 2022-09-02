@@ -7,48 +7,50 @@ class TextInputBox extends StatelessWidget {
   final TextEditingController controller;
   final bool obscuretext;
   final FormFieldValidator<String>? validator;
+  final int maxLines;
+  final Widget? suffixIcon;
   const TextInputBox({
     Key? key,
     required this.hintText,
     required this.controller,
     this.obscuretext = false,
     this.validator,
+    this.maxLines = 1,
+    this.suffixIcon,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 48.h,
-      child: TextFormField(
-        controller: controller,
-        obscureText: obscuretext,
-        cursorColor: Colors.black,
-        decoration: InputDecoration(
-          labelText: hintText,
-          labelStyle: TextStyle(
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w400,
-            color: AppColors.primaryBlue,
-          ),
-          // hintText: hintText,
-          fillColor: const Color.fromRGBO(245, 245, 245, 1),
-          filled: true,
-          hintStyle: TextStyle(
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w400,
-            color: const Color.fromRGBO(125, 127, 129, 1),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.circular(6.r),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.circular(6.r),
-          ),
+    return TextFormField(
+      controller: controller,
+      obscureText: obscuretext,
+      cursorColor: Colors.black,
+      decoration: InputDecoration(
+        suffixIcon: suffixIcon,
+        // labelText: hintText,
+        // labelStyle: TextStyle(
+        //   fontSize: 16.sp,
+        //   fontWeight: FontWeight.w400,
+        //   color: AppColors.primaryBlue,
+        // ),
+        hintText: hintText,
+        fillColor: const Color.fromRGBO(245, 245, 245, 1),
+        filled: true,
+        hintStyle: TextStyle(
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w400,
+          color: const Color.fromRGBO(125, 127, 129, 1),
         ),
-        validator: validator,
+        border: const OutlineInputBorder(
+          borderSide: BorderSide(color: AppColors.grey),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(6.r),
+        ),
       ),
+      validator: validator,
+      maxLines: maxLines,
     );
   }
 }

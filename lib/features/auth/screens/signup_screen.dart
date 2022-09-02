@@ -22,6 +22,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _studentEmailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  bool isPasswordInvisible = true;
 
   @override
   void dispose() {
@@ -29,6 +30,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
     _studentEmailController.dispose();
     _passwordController.dispose();
     super.dispose();
+  }
+
+  void passwordVisibility() {
+    setState(() {
+      isPasswordInvisible = !isPasswordInvisible;
+    });
   }
 
   @override
@@ -56,14 +63,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Spc(h: 100.h),
+                Spc(h: 70.h),
 
                 // bu logo
                 SizedBox(
                   height: 150.h,
                   child: Image.asset(AppImages.schoolLogo),
                 ),
-                Spc(h: 100.h),
+                Spc(h: 50.h),
                 Text(
                   AppTexts.welcome,
                   style: TextStyle(
@@ -92,7 +99,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     return null;
                   },
                 ),
-                Spc(h: 20.h),
+                Spc(h: 15.h),
 
                 // email input
                 TextInputBox(
@@ -102,24 +109,39 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     if (val == null || val.isEmpty) {
                       return AppTexts.emailError;
                     }
-                    if (!val.toString().contains('@student.babcock.edu.ng')) {
+                    if (!val.toString().contains(AppTexts.emailValidator)) {
                       return AppTexts.emailErrorValidate;
                     }
                     return null;
                   },
                 ),
-                Spc(h: 20.h),
+                Spc(h: 15.h),
 
                 // password input
-                TextInputBox(
-                  hintText: AppTexts.passwordHintText,
-                  controller: _passwordController,
-                  validator: (val) {
-                    if (val == null || val.isEmpty) {
-                      return AppTexts.passwordError;
-                    }
-                    return null;
-                  },
+                Stack(
+                  children: [
+                    TextInputBox(
+                      hintText: AppTexts.passwordHintText,
+                      controller: _passwordController,
+                      obscuretext: isPasswordInvisible,
+                      validator: (val) {
+                        if (val == null || val.isEmpty) {
+                          return AppTexts.passwordError;
+                        }
+                        return null;
+                      },
+                      suffixIcon: GestureDetector(
+                        onTap:
+                            passwordVisibility, //call this method when contact with screen is removed
+                        child: Icon(
+                          Icons.remove_red_eye,
+                          color: isPasswordInvisible == true
+                              ? AppColors.grey
+                              : AppColors.primaryBlue,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 Spc(h: 20.h),
 
