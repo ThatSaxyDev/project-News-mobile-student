@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:project_news_student/features/auth/screens/login_screen.dart';
+import 'package:project_news_student/features/auth/services/auth_services.dart';
 import 'package:project_news_student/features/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:project_news_student/shared/app_elements/app_colors.dart';
 import 'package:project_news_student/shared/app_elements/app_constants.dart';
@@ -12,7 +13,7 @@ import 'package:project_news_student/shared/widgets/spacer.dart';
 import 'package:project_news_student/shared/widgets/text_input.dart';
 
 class SignUpScreen extends StatefulWidget {
-  static const String routeName = '/signup-screen'; 
+  static const String routeName = '/signup-screen';
   const SignUpScreen({Key? key}) : super(key: key);
 
   @override
@@ -25,7 +26,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _studentEmailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final AuthServices authServices = AuthServices();
   bool isPasswordInvisible = true;
+
+  void signUpUser() {
+    authServices.signUpUser(
+      context: context,
+      name: _nameController.text,
+      email: _studentEmailController.text,
+      password: _passwordController.text,
+      school: selectedSchool,
+    );
+  }
 
   @override
   void dispose() {
@@ -134,8 +146,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         return null;
                       },
                       suffixIcon: GestureDetector(
-                        onTap:
-                            passwordVisibility, 
+                        onTap: passwordVisibility,
                         child: Icon(
                           Icons.remove_red_eye,
                           color: isPasswordInvisible == true
@@ -183,7 +194,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   onTap: () {
                     if (_signUpFormKey.currentState!.validate()) {
                       // sign up user
-                      Navigator.pushNamed(context, BottomNavBar.routeName);
+                      signUpUser();
                     }
                   },
                 ),
@@ -204,7 +215,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           text: AppTexts.loginClickText,
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              Navigator.pushNamed(context, LoginScreen.routeName);
+                              Navigator.pushNamed(
+                                  context, LoginScreen.routeName);
                             },
                           style: TextStyle(
                             color: AppColors.primaryBlue,
