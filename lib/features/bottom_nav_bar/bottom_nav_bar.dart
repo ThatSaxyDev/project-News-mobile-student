@@ -1,6 +1,8 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:project_news_student/features/home/screens/home_screen.dart';
+import 'package:project_news_student/features/home/screens/profile_logout.dart';
 import 'package:project_news_student/shared/app_elements/app_colors.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -15,9 +17,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
   int _page = 0;
 
   List<Widget> pages = [
-    const Center(child: Text('Home')),
+    const HomeScreen(),
     const Center(child: Text('Favorite')),
-    const Center(child: Text('Profile')),
+    const Logout(),
   ];
 
   void updatePage(int page) {

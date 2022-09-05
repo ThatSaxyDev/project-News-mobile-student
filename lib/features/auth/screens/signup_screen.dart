@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:project_news_student/features/auth/screens/login_screen.dart';
 import 'package:project_news_student/features/auth/services/auth_services.dart';
 import 'package:project_news_student/features/bottom_nav_bar/bottom_nav_bar.dart';
+import 'package:project_news_student/features/home/screens/home_screen.dart';
 import 'package:project_news_student/shared/app_elements/app_colors.dart';
 import 'package:project_news_student/shared/app_elements/app_constants.dart';
 import 'package:project_news_student/shared/app_elements/app_images.dart';
@@ -28,6 +29,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final AuthServices authServices = AuthServices();
   bool isPasswordInvisible = true;
+  // bool isLoggingIn = false;
 
   void signUpUser() {
     authServices.signUpUser(
@@ -38,6 +40,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       school: selectedSchool,
     );
   }
+
 
   @override
   void dispose() {
@@ -190,11 +193,41 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                 // sign up button
                 Button(
-                  title: AppTexts.signUpButtonText,
-                  onTap: () {
+                  item: 
+                  // isLoggingIn
+                  //     ? const CircularProgressIndicator()
+                  //     : 
+                      Text(
+                          AppTexts.signUpButtonText,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16.sp,
+                          ),
+                        ),
+                  onTap: () async {
                     if (_signUpFormKey.currentState!.validate()) {
-                      // sign up user
                       signUpUser();
+                      // setState(() {
+                      //   isLoggingIn = true;
+                      // });
+                      // await AuthServices.signUpUser(
+                      //   context: context,
+                      //   name: _nameController.text,
+                      //   email: _studentEmailController.text,
+                      //   password: _passwordController.text,
+                      //   school: selectedSchool,
+                      // ).then((value) => value == 200)
+                      //     ? {
+                      //         setState(() => isLoggingIn = false),
+                      //         // Navigator.popAndPushNamed(
+                      //         //   context,
+                      //         //   HomeScreen.routeName,
+                      //         // ),
+                      //       }
+                      //     : {
+                      //         setState(() => isLoggingIn = false),
+                      //       };
                     }
                   },
                 ),

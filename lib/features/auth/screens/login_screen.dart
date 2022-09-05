@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:project_news_student/features/auth/screens/signup_screen.dart';
+import 'package:project_news_student/features/auth/services/auth_services.dart';
 import 'package:project_news_student/features/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:project_news_student/shared/app_elements/app_colors.dart';
 import 'package:project_news_student/shared/app_elements/app_constants.dart';
@@ -24,6 +25,15 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _studentEmailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool isPasswordInvisible = true;
+  final AuthServices authServices = AuthServices();
+
+  void loginUser() {
+    authServices.signInUser(
+      context: context,
+      email: _studentEmailController.text,
+      password: _passwordController.text,
+    );
+  }
 
   @override
   void dispose() {
@@ -135,11 +145,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 // login button
                 Button(
-                  title: AppTexts.loginButtonText,
+                  item: Text(
+                    AppTexts.loginButtonText,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16.sp,
+                    ),
+                  ),
                   onTap: () {
                     if (_loginFormKey.currentState!.validate()) {
                       // sign up user
-                      Navigator.pushNamed(context, BottomNavBar.routeName);
+                      loginUser();
                     }
                   },
                 ),
