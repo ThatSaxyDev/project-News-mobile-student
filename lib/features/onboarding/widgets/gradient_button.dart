@@ -23,14 +23,15 @@ class GradientButton extends StatelessWidget {
           borderRadius: BorderRadius.all(
             Radius.circular(6.r),
           ),
-          gradient: const LinearGradient(
-            colors: [
-              AppColors.blue02,
-              AppColors.primaryBlue,
-            ],
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-          ),
+          // gradient: const LinearGradient(
+          //   colors: [
+          //     AppColors.blue02,
+          //     AppColors.primaryBlue,
+          //   ],
+          //   begin: Alignment.centerLeft,
+          //   end: Alignment.centerRight,
+          // ),
+          color: AppColors.primaryBlue,
         ),
         child: Center(
           child: Row(

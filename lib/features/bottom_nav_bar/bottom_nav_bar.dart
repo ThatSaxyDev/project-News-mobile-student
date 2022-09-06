@@ -1,6 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:project_news_student/features/home/screens/home_screen.dart';
 import 'package:project_news_student/features/home/screens/profile_logout.dart';
 import 'package:project_news_student/shared/app_elements/app_colors.dart';
@@ -37,29 +38,60 @@ class _BottomNavBarState extends State<BottomNavBar> {
       child: Scaffold(
         // backgroundColor: AppColors.blue02,
         body: pages[_page],
-        bottomNavigationBar: CurvedNavigationBar(
-          height: 75.h,
-          backgroundColor: AppColors.neutralWhite,
+        bottomNavigationBar: Container(
           color: AppColors.blue02,
-          buttonBackgroundColor: AppColors.blue02,
-          animationCurve: Curves.easeInOut,
-          animationDuration: const Duration(milliseconds: 400),
-          onTap: updatePage,
-          items: const [
-            Icon(
-              Icons.home,
-              color: AppColors.neutralWhite,
-            ),
-            Icon(
-              Icons.favorite,
-              color: AppColors.neutralWhite,
-            ),
-            Icon(
-              Icons.person,
-              color: AppColors.neutralWhite,
-            ),
-          ],
+          padding: EdgeInsets.only(
+            left: 17.w,
+            right: 17.w,
+            bottom: 10.h
+            // vertical: 17.w,
+          ),
+          child: GNav(
+            onTabChange: updatePage,
+            backgroundColor: AppColors.blue02,
+            color: AppColors.neutralWhite,
+            activeColor: AppColors.primaryBlue,
+            gap: 10.w,
+            tabs: const [
+              GButton(
+                icon: Icons.home,
+                text: 'Home',
+              ),
+              GButton(
+                icon: Icons.favorite,
+                text: 'Favorite',
+              ),
+              GButton(
+                icon: Icons.person,
+                text: 'Profile',
+              ),
+            ],
+          ),
         ),
+
+        //  CurvedNavigationBar(
+        //   height: 75.h,
+        //   backgroundColor: Colors.transparent,
+        //   color: AppColors.blue02,
+        //   buttonBackgroundColor: AppColors.blue02,
+        //   animationCurve: Curves.easeInOut,
+        //   animationDuration: const Duration(milliseconds: 400),
+        //   onTap: updatePage,
+        //   items: const [
+        //     Icon(
+        //       Icons.home,
+        //       color: AppColors.neutralWhite,
+        //     ),
+        //     Icon(
+        //       Icons.favorite,
+        //       color: AppColors.neutralWhite,
+        //     ),
+        //     Icon(
+        //       Icons.person,
+        //       color: AppColors.neutralWhite,
+        //     ),
+        //   ],
+        // ),
       ),
     );
   }

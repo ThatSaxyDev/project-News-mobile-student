@@ -11,4 +11,5 @@ static const orange02 = Color(0xFFFE8C00);
 static const green02 = Color(0xFFDEFDD6);
 static const red02 = Color(0xFFFFE5E5);
 static const grey = Color(0xFF999999);
+static const black = Color(0xFF000000);
 }

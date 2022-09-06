@@ -80,14 +80,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Spc(h: 70.h),
+                Spc(h: 110.h),
 
                 // bu logo
-                SizedBox(
-                  height: 150.h,
-                  child: Image.asset(AppImages.schoolLogo),
+                Align(
+                  alignment: Alignment.center,
+                  child: SizedBox(
+                    height: 90.h,
+                    child: Image.asset(AppImages.schoolLogo),
+                  ),
                 ),
-                Spc(h: 50.h),
+                Spc(h: 80.h),
                 Text(
                   AppTexts.welcome,
                   style: TextStyle(
@@ -188,7 +191,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     }).toList(),
                   ),
                 ),
-                Spc(h: 30.h),
+                Spc(h: 40.h),
 
                 // sign up button
                 Button(
