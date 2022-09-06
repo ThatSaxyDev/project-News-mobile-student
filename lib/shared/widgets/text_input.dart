@@ -7,7 +7,6 @@ class TextInputBox extends StatelessWidget {
   final TextEditingController controller;
   final bool obscuretext;
   final FormFieldValidator<String>? validator;
-  final int maxLines;
   final Widget? suffixIcon;
   const TextInputBox({
     Key? key,
@@ -15,7 +14,6 @@ class TextInputBox extends StatelessWidget {
     required this.controller,
     this.obscuretext = false,
     this.validator,
-    this.maxLines = 1,
     this.suffixIcon,
   }) : super(key: key);
 
@@ -26,6 +24,7 @@ class TextInputBox extends StatelessWidget {
       obscureText: obscuretext,
       cursorColor: Colors.black,
       decoration: InputDecoration(
+        isDense: true,
         errorStyle: TextStyle(
           fontSize: 12.sp
         ),
@@ -53,7 +52,6 @@ class TextInputBox extends StatelessWidget {
         ),
       ),
       validator: validator,
-      maxLines: maxLines,
     );
   }
 }

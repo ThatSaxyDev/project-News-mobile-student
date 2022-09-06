@@ -73,14 +73,17 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Spc(h: 70.h),
+                Spc(h: 110.h),
 
                 // bu logo
-                SizedBox(
-                  height: 150.h,
-                  child: Image.asset(AppImages.schoolLogo),
+                 Align(
+                  alignment: Alignment.center,
+                  child: SizedBox(
+                    height: 90.h,
+                    child: Image.asset(AppImages.schoolLogo),
+                  ),
                 ),
-                Spc(h: 120.h),
+                Spc(h: 180.h),
 
                 // welcome
                 Text(
@@ -141,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
-                Spc(h: 120.h),
+                Spc(h: 70.h),
 
                 // login button
                 Button(
