@@ -7,4 +7,6 @@ abstract class AppImages{
 
   // school logo
   static const String schoolLogo = 'lib/assets/images/main_logo.png';
+
+  static const String blankProfilePic = 'lib/assets/images/blankdp.png';
 }

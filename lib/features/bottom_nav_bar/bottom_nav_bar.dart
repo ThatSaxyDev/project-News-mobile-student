@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:project_news_student/features/home/screens/home_screen.dart';
 import 'package:project_news_student/features/home/screens/profile_logout.dart';
+import 'package:project_news_student/features/profile/screens/profile_screen.dart';
 import 'package:project_news_student/shared/app_elements/app_colors.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -20,7 +21,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   List<Widget> pages = [
     const HomeScreen(),
     const Center(child: Text('Favorite')),
-    const Logout(),
+    const ProfileScreen(),
   ];
 
   void updatePage(int page) {

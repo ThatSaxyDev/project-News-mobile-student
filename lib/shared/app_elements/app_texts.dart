@@ -41,6 +41,11 @@ abstract class AppTexts {
   // home screen
   static const String firstHeader = 'Breaking News';
   static const String secondHeader = 'Recent News';
+
+  // profile
+  static const String profileHeader = 'P R O F I L E';
+  static const String bookmarks = 'Bookmarks';
+
 }
 
 List<String> schools = [
