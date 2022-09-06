@@ -29,7 +29,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final AuthServices authServices = AuthServices();
   bool isPasswordInvisible = true;
-  // bool isLoggingIn = false;
+  // bool isSignedIn = false;
 
   void signUpUser() {
     authServices.signUpUser(
@@ -40,7 +40,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
       school: selectedSchool,
     );
   }
-
 
   @override
   void dispose() {
@@ -193,41 +192,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                 // sign up button
                 Button(
-                  item: 
-                  // isLoggingIn
-                  //     ? const CircularProgressIndicator()
-                  //     : 
+                  item:
+                      // isLoggingIn
+                      //     ? const CircularProgressIndicator()
+                      //     :
                       Text(
-                          AppTexts.signUpButtonText,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16.sp,
-                          ),
-                        ),
+                    AppTexts.signUpButtonText,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16.sp,
+                    ),
+                  ),
                   onTap: () async {
                     if (_signUpFormKey.currentState!.validate()) {
                       signUpUser();
                       // setState(() {
-                      //   isLoggingIn = true;
+                      //   isSignedIn = true;
                       // });
-                      // await AuthServices.signUpUser(
-                      //   context: context,
-                      //   name: _nameController.text,
-                      //   email: _studentEmailController.text,
-                      //   password: _passwordController.text,
-                      //   school: selectedSchool,
-                      // ).then((value) => value == 200)
-                      //     ? {
-                      //         setState(() => isLoggingIn = false),
-                      //         // Navigator.popAndPushNamed(
-                      //         //   context,
-                      //         //   HomeScreen.routeName,
-                      //         // ),
-                      //       }
-                      //     : {
-                      //         setState(() => isLoggingIn = false),
-                      //       };
+                      authServices.signInUser(
+                        context: context,
+                        email: _studentEmailController.text,
+                        password: _passwordController.text,
+                      );
                     }
                   },
                 ),

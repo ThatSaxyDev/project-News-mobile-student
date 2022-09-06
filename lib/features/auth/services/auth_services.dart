@@ -32,7 +32,7 @@ class AuthServices {
         password: password,
         token: '',
       );
-      final navigator = Navigator.of(context);
+      // final navigator = Navigator.of(context);
       http.Response res = await http.post(
         Uri.parse('${Constants.uri}/api/signup'),
         body: user.toJson(),
@@ -52,18 +52,18 @@ class AuthServices {
           //     (route) => false);
           showAlert(
             context,
-            'Account Created, proceed to login',
+            'Account Created',
           );
-          Timer(
-            const Duration(seconds: 3),
-            () {
-             navigator.pushAndRemoveUntil(
-              MaterialPageRoute(
-                builder: (context) => const LoginScreen(),
-              ),
-              (route) => false);
-            },
-          );
+          // Timer(
+          //   const Duration(seconds: 3),
+          //   () {
+          //    navigator.pushAndRemoveUntil(
+          //     MaterialPageRoute(
+          //       builder: (context) => const LoginScreen(),
+          //     ),
+          //     (route) => false);
+          //   },
+          // );
         },
       );
     } catch (e) {
