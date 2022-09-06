@@ -7,3 +7,7 @@ double height(BuildContext context){
 double width(BuildContext context){
   return MediaQuery.of(context).size.width;
 }
+
+class Constants {
+  static const String uri = 'http://localhost:3000';
+}
