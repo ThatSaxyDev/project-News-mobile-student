@@ -37,6 +37,10 @@ abstract class AppTexts {
   static const String dontHaveAccountText = 'Don\'t have an account? ';
   static const String signUpClickText = 'Sign up';
   static const String loginButtonText = 'L O G I N';
+
+  // home screen
+  static const String firstHeader = 'Breaking News';
+  static const String secondHeader = 'Recent News';
 }
 
 List<String> schools = [
