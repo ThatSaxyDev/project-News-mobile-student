@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,6 +41,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
       password: _passwordController.text,
       school: selectedSchool,
     );
+    Timer(const Duration(seconds: 5), () {
+      authServices.signInUser(
+        context: context,
+        email: _studentEmailController.text,
+        password: _passwordController.text,
+      );
+    });
   }
 
   @override
@@ -213,11 +222,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       // setState(() {
                       //   isSignedIn = true;
                       // });
-                      authServices.signInUser(
-                        context: context,
-                        email: _studentEmailController.text,
-                        password: _passwordController.text,
-                      );
+
                     }
                   },
                 ),

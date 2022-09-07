@@ -40,11 +40,15 @@ class _BottomNavBarState extends State<BottomNavBar> {
         // backgroundColor: AppColors.blue02,
         body: pages[_page],
         bottomNavigationBar: Container(
-          color: AppColors.blue02,
+          decoration: BoxDecoration(
+            color: AppColors.blue02,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20.r),
+              topRight: Radius.circular(20.r),
+            ),
+          ),
           padding: EdgeInsets.only(
-            left: 17.w,
-            right: 17.w,
-            bottom: 10.h
+            left: 17.w, right: 17.w, bottom: 10.h,
             // vertical: 17.w,
           ),
           child: GNav(

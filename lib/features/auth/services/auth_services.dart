@@ -45,25 +45,10 @@ class AuthServices {
         response: res,
         context: context,
         onSuccess: () {
-          // navigator.pushAndRemoveUntil(
-          //     MaterialPageRoute(
-          //       builder: (context) => const BottomNavBar(),
-          //     ),
-          //     (route) => false);
           showAlert(
             context,
             'Account Created',
           );
-          // Timer(
-          //   const Duration(seconds: 3),
-          //   () {
-          //    navigator.pushAndRemoveUntil(
-          //     MaterialPageRoute(
-          //       builder: (context) => const LoginScreen(),
-          //     ),
-          //     (route) => false);
-          //   },
-          // );
         },
       );
     } catch (e) {
