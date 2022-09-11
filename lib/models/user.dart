@@ -7,6 +7,7 @@ class User {
   final String email;
   final String school;
   final String password;
+  final String type;
   final String token;
   User({
     required this.id,
@@ -14,15 +15,19 @@ class User {
     required this.email,
     required this.school,
     required this.password,
+    required this.type,
     required this.token,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'id': id,
       'name': name,
       'email': email,
       'school': school,
       'password': password,
+      'type': type,
+      'token': token,
     };
   }
 
@@ -33,6 +38,7 @@ class User {
       email: map['email'] as String,
       school: map['school'] as String,
       password: map['password'] as String,
+      type: map['type'] as String,
       token: map['token'] as String,
     );
   }

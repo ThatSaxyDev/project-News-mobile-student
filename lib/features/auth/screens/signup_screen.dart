@@ -40,6 +40,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       email: _studentEmailController.text,
       password: _passwordController.text,
       school: selectedSchool,
+      type: 'student',
     );
     Timer(const Duration(seconds: 5), () {
       authServices.signInUser(
@@ -120,6 +121,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 //name input
                 TextInputBox(
                   hintText: AppTexts.nameHintText,
+                  height: 55.h,
                   controller: _nameController,
                   validator: (val) {
                     if (val == null || val.isEmpty) {
@@ -132,6 +134,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                 // email input
                 TextInputBox(
+                  height: 55.h,
                   hintText: AppTexts.emailHintText,
                   controller: _studentEmailController,
                   validator: (val) {
@@ -150,6 +153,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Stack(
                   children: [
                     TextInputBox(
+                      height: 55.h,
                       hintText: AppTexts.passwordHintText,
                       controller: _passwordController,
                       obscuretext: isPasswordInvisible,

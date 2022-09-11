@@ -9,6 +9,7 @@ class UserProvider extends ChangeNotifier {
     school: '',
     password: '',
     token: '',
+    type: '',
   );
 
   User get user => _user;
@@ -19,7 +20,7 @@ class UserProvider extends ChangeNotifier {
   }
 
   void setUserFromModel(User user) {
-    _user =  user;
+    _user = user;
     notifyListeners();
   }
 }

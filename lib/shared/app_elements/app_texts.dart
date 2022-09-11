@@ -30,6 +30,7 @@ abstract class AppTexts {
   static const String emailErrorValidate = 'This is not a valid student email';
   static const String passwordError = 'Enter your password';
   static const String emailValidator = '@student.babcock.edu.ng';
+  static const String type = 'student';
 
   // login texts
   static const String hey = 'Hey';

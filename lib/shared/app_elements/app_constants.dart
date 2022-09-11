@@ -9,5 +9,5 @@ double width(BuildContext context){
 }
 
 class Constants {
-  static const String uri = 'http://localhost:3000';
+  static const String uri = 'http://192.168.0.181:3000';
 }

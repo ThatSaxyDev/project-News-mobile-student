@@ -22,6 +22,7 @@ class AuthServices {
     required String email,
     required String password,
     required String school,
+    required String type,
   }) async {
     try {
       User user = User(
@@ -31,6 +32,7 @@ class AuthServices {
         school: school,
         password: password,
         token: '',
+        type: type,
       );
       // final navigator = Navigator.of(context);
       http.Response res = await http.post(

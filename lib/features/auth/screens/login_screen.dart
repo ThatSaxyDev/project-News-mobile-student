@@ -105,6 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 // email input
                 TextInputBox(
+                   height: 55.h,
                   hintText: AppTexts.emailHintText,
                   controller: _studentEmailController,
                   validator: (val) {
@@ -123,6 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Stack(
                   children: [
                     TextInputBox(
+                       height: 55.h,
                       hintText: AppTexts.passwordHintText,
                       controller: _passwordController,
                       obscuretext: isPasswordInvisible,
