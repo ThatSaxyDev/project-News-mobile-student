@@ -112,13 +112,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
                Spc(h: 14.h),
-              Padding(
-                 padding: EdgeInsets.symmetric(horizontal: 20.w),
-                child: Column(
-                  children:
-                      NewsData.recentNewsData.map((e) => NewsListTile(e)).toList(),
-                ),
-              ),
+              // Padding(
+              //    padding: EdgeInsets.symmetric(horizontal: 20.w),
+              //   child: Column(
+              //     children:
+              //         NewsData.recentNewsData.map((e) => NewsListTile(e)).toList(),
+              //   ),
+              // ),
             ],
           ),
         ),

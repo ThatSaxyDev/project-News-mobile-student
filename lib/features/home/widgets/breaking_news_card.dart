@@ -1,34 +1,36 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:project_news_student/features/home/services/news_model.dart';
 import 'package:project_news_student/features/news_details/screens/news_details_screen.dart';
 import 'package:project_news_student/shared/app_elements/app_colors.dart';
 import 'package:project_news_student/shared/widgets/spacer.dart';
 
-class BreakingNewsCard extends StatefulWidget {
-  const BreakingNewsCard(this.data, {Key? key}) : super(key: key);
-  final NewsData data;
-  @override
-  State<BreakingNewsCard> createState() => _BreakingNewsCardState();
-}
+class BreakingNewsCard extends StatelessWidget {
+  final String image;
+  final String title;
+  final String author;
+   final void Function()? onTap;
+  const BreakingNewsCard({
+    Key? key,
+    required this.image,
+    required this.title,
+    required this.author,
+    this.onTap,
+  }) : super(key: key);
 
-class _BreakingNewsCardState extends State<BreakingNewsCard> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => NewsDetailsScreen(widget.data),
-            ));
-      },
+      onTap: onTap,
       child: Container(
+        width: MediaQuery.of(context).size.height * 0.7,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30.r),
           image: DecorationImage(
             fit: BoxFit.fill,
-            image: NetworkImage(widget.data.urlToImage!),
+            image: NetworkImage(image),
           ),
         ),
         child: Container(
@@ -38,7 +40,7 @@ class _BreakingNewsCardState extends State<BreakingNewsCard> {
             gradient: const LinearGradient(
               colors: [
                 Colors.transparent,
-                Colors.black,
+                Colors.black54,
               ],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
@@ -49,16 +51,16 @@ class _BreakingNewsCardState extends State<BreakingNewsCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                widget.data.title!,
+                title,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 22.sp,
+                  fontWeight: FontWeight.w800,
                 ),
               ),
               Spc(h: 8.h),
               Text(
-                widget.data.author!,
+                author,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 14.sp,
