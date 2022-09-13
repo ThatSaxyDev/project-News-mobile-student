@@ -40,7 +40,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       email: _studentEmailController.text,
       password: _passwordController.text,
       school: selectedSchool,
-      type: 'student',
+      type: AppTexts.type,
     );
     Timer(const Duration(seconds: 5), () {
       authServices.signInUser(
