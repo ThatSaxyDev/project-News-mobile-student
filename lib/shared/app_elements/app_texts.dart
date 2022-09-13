@@ -30,6 +30,7 @@ abstract class AppTexts {
   static const String emailErrorValidate = 'This is not a valid student email';
   static const String passwordError = 'Enter your password';
   static const String emailValidator = '@student.babcock.edu.ng';
+  static const String type = 'student';
 
   // login texts
   static const String hey = 'Hey';
@@ -41,6 +42,11 @@ abstract class AppTexts {
   // home screen
   static const String firstHeader = 'Breaking News';
   static const String secondHeader = 'Recent News';
+
+  // profile
+  static const String profileHeader = 'P R O F I L E';
+  static const String bookmarks = 'Bookmarks';
+
 }
 
 List<String> schools = [

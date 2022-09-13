@@ -22,6 +22,7 @@ class AuthServices {
     required String email,
     required String password,
     required String school,
+    required String type,
   }) async {
     try {
       User user = User(
@@ -31,6 +32,7 @@ class AuthServices {
         school: school,
         password: password,
         token: '',
+        type: type,
       );
       // final navigator = Navigator.of(context);
       http.Response res = await http.post(
@@ -45,25 +47,10 @@ class AuthServices {
         response: res,
         context: context,
         onSuccess: () {
-          // navigator.pushAndRemoveUntil(
-          //     MaterialPageRoute(
-          //       builder: (context) => const BottomNavBar(),
-          //     ),
-          //     (route) => false);
           showAlert(
             context,
             'Account Created',
           );
-          // Timer(
-          //   const Duration(seconds: 3),
-          //   () {
-          //    navigator.pushAndRemoveUntil(
-          //     MaterialPageRoute(
-          //       builder: (context) => const LoginScreen(),
-          //     ),
-          //     (route) => false);
-          //   },
-          // );
         },
       );
     } catch (e) {

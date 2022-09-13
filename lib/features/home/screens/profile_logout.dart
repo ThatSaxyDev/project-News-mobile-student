@@ -15,13 +15,14 @@ class Logout extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Button(
-            onTap: () {
-              signOutUser(context);
-            },
-            item: Icon(
-              Icons.logout,
-              color: Colors.white,
-            )),
+          onTap: () {
+            signOutUser(context);
+          },
+          item: Icon(
+            Icons.logout,
+            color: Colors.white,
+          ),
+        ),
       ),
     );
   }

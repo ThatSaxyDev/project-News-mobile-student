@@ -65,8 +65,11 @@ class _NewsListTileState extends State<NewsListTile> {
                 children: [
                   Text(
                     widget.data.title!,
-                    style: const TextStyle(
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
                       color: Colors.black,
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -74,7 +77,8 @@ class _NewsListTileState extends State<NewsListTile> {
                   Text(
                     widget.data.content!,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
+                    style: TextStyle(
+                      fontSize: 14.sp,
                       color: Colors.black,
                     ),
                   ),
