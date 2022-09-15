@@ -57,6 +57,9 @@ class _MyAppState extends State<MyApp> {
         );
       },
       child: 
+      // Provider.of<UserProvider>(context).user.token.isEmpty
+      //     ? const OnboardingScreen()
+      //     : const BottomNavBar(),
       Provider.of<UserProvider>(context).user.token.isEmpty
           ? const SplashScreen()
           : const BottomNavBar(),

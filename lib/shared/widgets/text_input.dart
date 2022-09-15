@@ -54,7 +54,7 @@ class TextInputBox extends StatelessWidget {
             color: const Color.fromRGBO(125, 127, 129, 1),
           ),
           border: const OutlineInputBorder(
-            borderSide: BorderSide(color: AppColors.grey),
+            borderSide: BorderSide(color: AppColors.primaryBlue),
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide.none,

@@ -40,7 +40,7 @@ class GradientButton extends StatelessWidget {
               Text(
                 title,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: AppColors.neutralWhite,
                   fontWeight: FontWeight.w600,
                   fontSize: 16.sp,
                 ),
@@ -48,7 +48,7 @@ class GradientButton extends StatelessWidget {
               Spc(w: 17.5.w),
               Icon(
                 Icons.arrow_forward_ios_rounded,
-                color: Colors.white,
+                color: AppColors.neutralWhite,
                 size: 12.w,
               ),
             ],

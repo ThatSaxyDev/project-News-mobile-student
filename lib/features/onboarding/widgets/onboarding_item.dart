@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:project_news_student/shared/app_elements/app_colors.dart';
 import 'package:project_news_student/shared/widgets/spacer.dart';
 
 class OnboardingItem extends StatelessWidget {
@@ -29,6 +30,7 @@ class OnboardingItem extends StatelessWidget {
           Text(
             title,
             style: TextStyle(
+               color: AppColors.black,
               fontSize: 30.sp,
               fontWeight: FontWeight.w700,
             ),
@@ -39,6 +41,7 @@ class OnboardingItem extends StatelessWidget {
             maxLines: 4,
             textAlign: TextAlign.center,
             style: TextStyle(
+              color: AppColors.black,
               fontSize: 16.sp,
               fontWeight: FontWeight.w700,
             ),

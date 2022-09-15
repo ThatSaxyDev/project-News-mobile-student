@@ -76,14 +76,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
           decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: [
-                AppColors.primaryBlue,
-                AppColors.blue02,
-                AppColors.neutralWhite,
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
+            colors: [
+              AppColors.primaryBlue,
+              // AppColors.primaryBlue,
+              AppColors.neutralWhite,
+              AppColors.neutralWhite,
+              AppColors.neutralWhite,
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
           ),
           child: Form(
             key: _signUpFormKey,
@@ -114,7 +116,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   style: TextStyle(
                       fontSize: 15.sp,
                       fontWeight: FontWeight.w500,
-                      color: AppColors.neutralWhite),
+                      color: AppColors.primaryBlue),
                 ),
                 Spc(h: 20.h),
 

@@ -58,15 +58,17 @@ class _LoginScreenState extends State<LoginScreen> {
             horizontal: 30.w,
           ),
           decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                AppColors.primaryBlue,
-                AppColors.blue02,
-                AppColors.neutralWhite,
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
+             gradient: LinearGradient(
+            colors: [
+              AppColors.primaryBlue,
+              // AppColors.primaryBlue,
+              AppColors.neutralWhite,
+              AppColors.neutralWhite,
+              AppColors.neutralWhite,
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
           ),
           child: Form(
             key: _loginFormKey,
@@ -99,7 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: TextStyle(
                       fontSize: 15.sp,
                       fontWeight: FontWeight.w500,
-                      color: AppColors.neutralWhite),
+                      color: AppColors.primaryBlue),
                 ),
                 Spc(h: 20.h),
 

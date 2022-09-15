@@ -26,15 +26,26 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
+          // gradient: LinearGradient(
+          //   colors: [
+          //     AppColors.primaryBlue,
+          //     AppColors.blue02,
+          //     AppColors.neutralWhite,
+          //   ],
+          //   begin: Alignment.topLeft,
+          //   end: Alignment.bottomRight,
+          // ),
           gradient: LinearGradient(
             colors: [
               AppColors.primaryBlue,
-              AppColors.blue02,
+              AppColors.primaryBlue,
+              AppColors.neutralWhite,
               AppColors.neutralWhite,
             ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
+          // color: AppColors.primaryBlue,
         ),
         child: Column(
           children: [
