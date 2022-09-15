@@ -12,16 +12,19 @@ class NewsListTile extends StatelessWidget {
   final String title;
   final String content;
   final void Function()? onTap;
+  final void Function()? onLongPress;
   const NewsListTile({
     Key? key,
     required this.image,
     required this.title,
     required this.content,
     this.onTap,
+    this.onLongPress,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onLongPress: onLongPress,
       onTap: onTap,
       child: Container(
         width: double.infinity,

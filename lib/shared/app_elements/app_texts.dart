@@ -42,6 +42,7 @@ abstract class AppTexts {
   // home screen
   static const String firstHeader = 'Breaking News';
   static const String secondHeader = 'Recent News';
+  static const String heroMenu = 'menu-hero';
 
   // profile
   static const String profileHeader = 'P R O F I L E';

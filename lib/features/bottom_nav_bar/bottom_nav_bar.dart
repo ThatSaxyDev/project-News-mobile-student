@@ -41,9 +41,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
           topLeft: Radius.circular(20.r),
           topRight: Radius.circular(20.r),
         ),
-        color: AppColors.blue02,
+        color: AppColors.primaryBlue,
         child: SizedBox(
-          height: 95.h,
+          height: 80.h,
           width: double.infinity,
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 45.w),
@@ -51,7 +51,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: iconData
                   .map(
-                    (item) => InkWell(
+                    (item) => GestureDetector(
                       onTap: () {
                         setState(() {
                           _page = iconData.indexOf(item);
@@ -59,7 +59,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
                       },
                       child: AnimatedContainer(
                         padding: EdgeInsets.symmetric(vertical: 10.h),
-                        duration: const Duration(milliseconds: 250),
+                        duration: const Duration(milliseconds: 400),
+                        curve: Curves.easeInOutExpo,
                         width: 35,
                         decoration: BoxDecoration(
                           border: _page == iconData.indexOf(item)
@@ -74,10 +75,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
                               ? const LinearGradient(
                                   colors: [
                                     AppColors.neutralWhite,
-                                    AppColors.blue02,
-                                    AppColors.blue02,
-                                    AppColors.blue02,
-                                    AppColors.blue02,
+                                    AppColors.primaryBlue,
+                                    AppColors.primaryBlue,
+                                    AppColors.primaryBlue,
+                                    AppColors.primaryBlue,
                                   ],
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
@@ -89,7 +90,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                           size: 35.w,
                           color: _page == iconData.indexOf(item)
                               ? Colors.white
-                              : Colors.white.withOpacity(0.5),
+                              : Colors.white.withOpacity(0.3),
                         ),
                       ),
                     ),
