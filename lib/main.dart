@@ -6,6 +6,7 @@ import 'package:project_news_student/features/auth/screens/signup_screen.dart';
 import 'package:project_news_student/features/auth/services/auth_services.dart';
 import 'package:project_news_student/features/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:project_news_student/features/onboarding/screens/onboarding_screen.dart';
+import 'package:project_news_student/features/splash/screens/splash_screen.dart';
 import 'package:project_news_student/providers/user_provider.dart';
 import 'package:project_news_student/shared/app_elements/app_colors.dart';
 import 'package:project_news_student/shared/app_elements/app_texts.dart';
@@ -55,9 +56,11 @@ class _MyAppState extends State<MyApp> {
           home: child,
         );
       },
-      child: Provider.of<UserProvider>(context).user.token.isEmpty
-          ? const OnboardingScreen()
-          : const BottomNavBar(),
+      child: 
+      // Provider.of<UserProvider>(context).user.token.isEmpty
+      //     ? const OnboardingScreen()
+      //     : const BottomNavBar(),
+      const SplashScreen()
     );
   }
 }
