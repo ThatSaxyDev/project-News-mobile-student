@@ -4,10 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
+import 'package:project_news_student/features/auth/screens/login_screen.dart';
 import 'package:project_news_student/features/bottom_nav_bar/bottom_nav_bar.dart';
+import 'package:project_news_student/features/onboarding/screens/onboarding_screen.dart';
+import 'package:project_news_student/providers/user_provider.dart';
 import 'package:project_news_student/shared/app_elements/app_colors.dart';
 import 'package:project_news_student/shared/app_elements/app_images.dart';
 import 'package:project_news_student/shared/widgets/spacer.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -28,7 +32,10 @@ class _SplashScreenState extends State<SplashScreen>
     Timer(const Duration(milliseconds: 6500), () {
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
-            builder: (context) => const BottomNavBar(),
+            builder: (context) =>
+                Provider.of<UserProvider>(context).user.token.isNotEmpty
+                    ? const BottomNavBar()
+                    : const OnboardingScreen(),
           ),
           (route) => false);
     });
