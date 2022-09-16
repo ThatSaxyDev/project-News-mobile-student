@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:project_news_student/features/auth/services/auth_services.dart';
 import 'package:project_news_student/features/home/services/news_model.dart';
 import 'package:project_news_student/features/home/widgets/news_list_tile.dart';
+import 'package:project_news_student/features/profile/widgets/bookmarks_news_tile.dart';
+import 'package:project_news_student/models/news.dart';
 import 'package:project_news_student/providers/user_provider.dart';
 import 'package:project_news_student/shared/app_elements/app_colors.dart';
 import 'package:project_news_student/shared/app_elements/app_images.dart';
@@ -51,6 +53,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context).user;
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -98,7 +101,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 user.email,
                 style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w500),
               ),
-      
+
               //
               Spc(h: 20.h),
               Align(
@@ -111,14 +114,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
               ),
-               Spc(h: 14.h),
-              // Padding(
-              //    padding: EdgeInsets.symmetric(horizontal: 20.w),
-              //   child: Column(
-              //     children:
-              //         NewsData.recentNewsData.map((e) => NewsListTile(e)).toList(),
-              //   ),
-              // ),
+              Spc(h: 14.h),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: user.bookmarks.length,
+                  itemBuilder: (context, index) {
+                    return BookmarksNewsListTile(index: index);
+                  },
+                ),
+              ),
             ],
           ),
         ),
