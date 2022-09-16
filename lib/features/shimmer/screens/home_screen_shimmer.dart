@@ -70,19 +70,19 @@ class _HomeScreenShimmerState extends State<HomeScreenShimmer> {
             ),
             Spc(h: 23.h),
             ShimnmerContainer(
-              height: 100.h,
+              height: 70.h,
               width: double.infinity,
             ),
             Spc(h: 23.h),
             ShimnmerContainer(
-              height: 100.h,
+              height: 70.h,
               width: double.infinity,
             ),
             Spc(h: 23.h),
-            // ShimnmerContainer(
-            //   height: 100.h,
-            //   width: double.infinity,
-            // ),
+            ShimnmerContainer(
+              height: 70.h,
+              width: double.infinity,
+            ),
           ],
         ),
       ).animate(onPlay: (controller) => controller.repeat())

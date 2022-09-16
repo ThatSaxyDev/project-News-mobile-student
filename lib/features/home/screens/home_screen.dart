@@ -1,9 +1,13 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:focused_menu/focused_menu.dart';
 import 'package:focused_menu/modals.dart';
+import 'package:project_news_student/shared/utils/alert.dart';
+import 'package:provider/provider.dart';
+
 import 'package:project_news_student/features/home/services/home_services.dart';
 import 'package:project_news_student/features/home/services/news_model.dart';
 import 'package:project_news_student/features/home/widgets/breaking_news_card.dart';
@@ -11,18 +15,23 @@ import 'package:project_news_student/features/home/widgets/menu.dart';
 import 'package:project_news_student/features/home/widgets/news_list_tile.dart';
 import 'package:project_news_student/features/news_details/screens/news_details_screen.dart';
 import 'package:project_news_student/features/news_details/screens/news_details_screen2.dart';
+import 'package:project_news_student/features/news_details/services/news_details_services.dart';
 import 'package:project_news_student/features/shimmer/screens/home_screen_shimmer.dart';
 import 'package:project_news_student/models/news.dart';
 import 'package:project_news_student/providers/user_provider.dart';
 import 'package:project_news_student/shared/app_elements/app_colors.dart';
+import 'package:project_news_student/shared/app_elements/app_constants.dart';
 import 'package:project_news_student/shared/app_elements/app_texts.dart';
 import 'package:project_news_student/shared/widgets/loader.dart';
 import 'package:project_news_student/shared/widgets/spacer.dart';
-import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home-screen';
-  const HomeScreen({Key? key}) : super(key: key);
+  final News? news;
+  const HomeScreen({
+    Key? key,
+    this.news,
+  }) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -31,6 +40,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late List<News> newsList;
   final HomeServices homeServices = HomeServices();
+  final NewsServices newsServices = NewsServices();
 
   @override
   void initState() {
@@ -43,34 +53,50 @@ class _HomeScreenState extends State<HomeScreen> {
     return newsList;
   }
 
+  // void addToBookmarks() {
+  //   newsServices.addToBookmarks(
+  //     context: context,
+  //     news: widget.news!,
+  //   );
+  //   showAlert(context, 'Added to bookmarks');
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        elevation: 0.0,
-        backgroundColor: Colors.transparent,
-        title: Text(
-          AppTexts.appName,
-          style: TextStyle(
-            color: AppColors.primaryBlue,
-            fontSize: 22.sp,
+      appBar: PreferredSize(
+        preferredSize: Size(width(context), 65.h),
+        child: AppBar(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(9.r),
+            ),
           ),
-        )
-            .animate(onPlay: (controller) => controller.repeat())
-            .shimmer(delay: 4000.ms, duration: 1800.ms) // shimmer +
-            .shake(hz: 4, curve: Curves.easeInOutCubic) // shake +
-            .scale(begin: 1.0, end: 1.1, duration: 600.ms) // scale up
-            .then(delay: 600.ms) // then wait and
-            .scale(begin: 1.0, end: 1 / 1.1),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.search,
-                color: AppColors.primaryBlue,
-              ))
-        ],
+          centerTitle: true,
+          elevation: 0.0,
+          backgroundColor: AppColors.primaryBlue,
+          title: Text(
+            AppTexts.appName,
+            style: TextStyle(
+              color: AppColors.neutralWhite,
+              fontSize: 22.sp,
+            ),
+          )
+              .animate(onPlay: (controller) => controller.repeat())
+              .shimmer(delay: 4000.ms, duration: 1800.ms) // shimmer +
+              .shake(hz: 4, curve: Curves.easeInOutCubic) // shake +
+              .scale(begin: 1.0, end: 1.1, duration: 600.ms) // scale up
+              .then(delay: 600.ms) // then wait and
+              .scale(begin: 1.0, end: 1 / 1.1),
+          actions: [
+            IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.search,
+                  color: AppColors.neutralWhite,
+                ))
+          ],
+        ),
       ),
       body: FutureBuilder(
         future: fetchAllNews(),
@@ -94,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(left: 20.w),
+                      padding: EdgeInsets.only(left: 20.w, top: 20.h),
                       child: Text(
                         AppTexts.firstHeader,
                         style: TextStyle(
@@ -118,18 +144,30 @@ class _HomeScreenState extends State<HomeScreen> {
                             duration: const Duration(milliseconds: 500),
                             menuItems: <FocusedMenuItem>[
                               FocusedMenuItem(
-                                title: Text('Open'),
-                                trailingIcon: Icon(Icons.open_in_new),
-                                onPressed: () {},
+                                title: const Text(AppTexts.open),
+                                trailingIcon: const Icon(Icons.open_in_new),
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    NewsDetailsScreen.routeName,
+                                    arguments: news,
+                                  );
+                                },
                               ),
                               FocusedMenuItem(
-                                title: Text('Add to bookmarks'),
-                                trailingIcon: Icon(Icons.bookmark_add),
-                                onPressed: () {},
+                                title: const Text(AppTexts.addToBookmarks),
+                                trailingIcon: const Icon(Icons.bookmark_add),
+                                onPressed: () {
+                                  newsServices.addToBookmarks(
+                                    context: context,
+                                    news: news,
+                                  );
+                                  showAlert(context, AppTexts.addedToBookmarks);
+                                },
                               ),
                               FocusedMenuItem(
-                                title: Text('Share'),
-                                trailingIcon: Icon(Icons.share),
+                                title: const Text(AppTexts.share),
+                                trailingIcon: const Icon(Icons.share),
                                 onPressed: () {},
                               ),
                             ],
@@ -181,12 +219,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               (e) => FocusedMenuHolder(
                                 onPressed: () {},
                                 menuWidth:
-                                    MediaQuery.of(context).size.width * 0.5,
+                                    MediaQuery.of(context).size.width * 0.6,
                                 duration: const Duration(milliseconds: 500),
                                 menuItems: <FocusedMenuItem>[
                                   FocusedMenuItem(
-                                    title: Text('Open'),
-                                    trailingIcon: Icon(Icons.open_in_new),
+                                    title: const Text(AppTexts.open),
+                                    trailingIcon: const Icon(Icons.open_in_new),
                                     onPressed: () {
                                       Navigator.pushNamed(
                                         context,
@@ -196,13 +234,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                     },
                                   ),
                                   FocusedMenuItem(
-                                    title: Text('Add to bookmarks'),
-                                    trailingIcon: Icon(Icons.bookmark_add),
-                                    onPressed: () {},
+                                    title: const Text(AppTexts.addToBookmarks),
+                                    trailingIcon:
+                                        const Icon(Icons.bookmark_add),
+                                    onPressed: () {
+                                      newsServices.addToBookmarks(
+                                    context: context,
+                                    news: e,
+                                  );
+                                  showAlert(context, AppTexts.addedToBookmarks);
+                                    },
                                   ),
                                   FocusedMenuItem(
-                                    title: Text('Share'),
-                                    trailingIcon: Icon(Icons.share),
+                                    title: const Text(AppTexts.share),
+                                    trailingIcon: const Icon(Icons.share),
                                     onPressed: () {},
                                   ),
                                 ],

@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:project_news_student/features/home/services/news_model.dart';
+import 'package:project_news_student/features/news_details/services/news_details_services.dart';
 import 'package:project_news_student/models/news.dart';
 import 'package:project_news_student/shared/app_elements/app_colors.dart';
 import 'package:project_news_student/shared/app_elements/app_texts.dart';
+import 'package:project_news_student/shared/utils/alert.dart';
 import 'package:project_news_student/shared/widgets/spacer.dart';
 
-class NewsDetailsScreen2 extends StatelessWidget {
+class NewsDetailsScreen2 extends StatefulWidget {
   static const String routeName = '/news-details2';
   final News news;
   const NewsDetailsScreen2({
@@ -17,7 +19,22 @@ class NewsDetailsScreen2 extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<NewsDetailsScreen2> createState() => _NewsDetailsScreen2State();
+}
+
+class _NewsDetailsScreen2State extends State<NewsDetailsScreen2> {
+  @override
   Widget build(BuildContext context) {
+    final NewsServices newsServices = NewsServices();
+
+    void addToBookmarks() {
+    newsServices.addToBookmarks(
+      context: context,
+      news: widget.news,
+    );
+    showAlert(context, AppTexts.addedToBookmarks);
+  }
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -30,6 +47,14 @@ class NewsDetailsScreen2 extends StatelessWidget {
             fontSize: 22.sp,
           ),
         ),
+        actions: [
+          IconButton(
+                onPressed: addToBookmarks,
+                icon: const Icon(
+                  Icons.bookmark_add_outlined,
+                  color: AppColors.primaryBlue,
+                ))
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -39,7 +64,7 @@ class NewsDetailsScreen2 extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                news.title,
+                widget.news.title,
                 style: TextStyle(
                   fontSize: 26.sp,
                   fontWeight: FontWeight.bold,
@@ -47,21 +72,21 @@ class NewsDetailsScreen2 extends StatelessWidget {
               ),
              Spc(h: 8.h),
               Text(
-                news.date,
+                widget.news.date,
                 style: const TextStyle(
                   color: Colors.black54,
                 ),
               ),
               Spc(h: 20.h),
               Hero(
-                tag: news.image,
+                tag: widget.news.image,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(30.r),
-                  child: Image.network(news.image),
+                  child: Image.network(widget.news.image),
                 ),
               ),
               Spc(h: 30.h),
-              Text(news.content)
+              Text(widget.news.content)
             ],
           ),
         ),

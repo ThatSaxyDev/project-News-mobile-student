@@ -33,6 +33,7 @@ class AuthServices {
         password: password,
         token: '',
         type: type,
+        bookmarks: [],
       );
       // final navigator = Navigator.of(context);
       http.Response res = await http.post(

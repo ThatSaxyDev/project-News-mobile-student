@@ -9,6 +9,7 @@ class User {
   final String password;
   final String type;
   final String token;
+  final List<dynamic> bookmarks;
   User({
     required this.id,
     required this.name,
@@ -17,6 +18,7 @@ class User {
     required this.password,
     required this.type,
     required this.token,
+    required this.bookmarks,
   });
 
   Map<String, dynamic> toMap() {
@@ -40,10 +42,38 @@ class User {
       password: map['password'] as String,
       type: map['type'] as String,
       token: map['token'] as String,
+      bookmarks: List<Map<String, dynamic>>.from(
+        map['bookmarks']?.map(
+          (x) => Map<String, dynamic>.from(x),
+        ),
+      ),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory User.fromJson(String source) => User.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory User.fromJson(String source) =>
+      User.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  User copyWith({
+    String? id,
+    String? name,
+    String? email,
+    String? school,
+    String? password,
+    String? type,
+    String? token,
+    List<dynamic>? bookmarks,
+  }) {
+    return User(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      email: email ?? this.email,
+      school: school ?? this.school,
+      password: password ?? this.password,
+      type: type ?? this.type,
+      token: token ?? this.token,
+      bookmarks: bookmarks ?? this.bookmarks,
+    );
+  }
 }

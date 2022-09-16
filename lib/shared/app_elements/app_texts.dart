@@ -43,11 +43,15 @@ abstract class AppTexts {
   static const String firstHeader = 'Breaking News';
   static const String secondHeader = 'Recent News';
   static const String heroMenu = 'menu-hero';
+  //pop up menu
+  static const String open = 'Open';
+  static const String addToBookmarks = 'Add to Bookmarks';
+  static const String share = 'Share';
+  static const String addedToBookmarks = 'Added to bookmarks';
 
   // profile
   static const String profileHeader = 'P R O F I L E';
   static const String bookmarks = 'Bookmarks';
-
 }
 
 List<String> schools = [
