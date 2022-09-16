@@ -2,6 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:project_news_student/features/categories/screens/categories_screen.dart';
 import 'package:project_news_student/features/home/screens/home_screen.dart';
 import 'package:project_news_student/features/home/screens/profile_logout.dart';
 import 'package:project_news_student/features/profile/screens/profile_screen.dart';
@@ -21,13 +22,13 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   List<IconData> iconData = [
     Icons.home_outlined,
-    Icons.favorite,
+    Icons.category_outlined,
     Icons.person_outline_sharp
   ];
 
   List<Widget> pages = [
     const HomeScreen(),
-    const Center(child: Text('Favorite')),
+    const CategoriesScreen(),
     const ProfileScreen(),
   ];
 

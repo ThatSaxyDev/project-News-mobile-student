@@ -115,16 +115,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               Spc(h: 14.h),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w),
-                child: ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: user.bookmarks.length,
-                  itemBuilder: (context, index) {
-                    return BookmarksNewsListTile(index: index);
-                  },
-                ),
+              ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: user.bookmarks.length,
+                itemBuilder: (context, index) {
+                  return BookmarksNewsListTile(index: index);
+                },
               ),
             ],
           ),

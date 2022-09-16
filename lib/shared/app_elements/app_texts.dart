@@ -46,12 +46,17 @@ abstract class AppTexts {
   //pop up menu
   static const String open = 'Open';
   static const String addToBookmarks = 'Add to Bookmarks';
+  static const String removeFromBookmarks = 'Remove';
   static const String share = 'Share';
   static const String addedToBookmarks = 'Added to bookmarks';
+  static const String removedFromBookmarks = 'Removed from bookmarks';
 
   // profile
   static const String profileHeader = 'P R O F I L E';
   static const String bookmarks = 'Bookmarks';
+
+  // categoties
+  static const String categoriesHeader = 'C A T E G O R I E S';
 }
 
 List<String> schools = [

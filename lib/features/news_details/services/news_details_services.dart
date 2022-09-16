@@ -43,4 +43,34 @@ class NewsServices {
       showAlert(context, e.toString());
     }
   }
+
+  // remmove from bookmarks
+  void removeFromBookmarks({
+    required BuildContext context,
+    required News news,
+  }) async {
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    try {
+      http.Response res = await http.delete(
+        Uri.parse('${Constants.uri}/api/remove-from-bookmarks/${news.id}'),
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+          'x-auth-token': userProvider.user.token,
+        },
+      );
+
+      httpErrorHandle(
+        response: res,
+        context: context,
+        onSuccess: () {
+          User user = userProvider.user.copyWith(
+            bookmarks: jsonDecode(res.body)['bookmarks'],
+          );
+          userProvider.setUserFromModel(user);
+        },
+      );
+    } catch (e) {
+      showAlert(context, e.toString());
+    }
+  }
 }
