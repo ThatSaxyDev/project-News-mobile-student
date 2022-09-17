@@ -239,10 +239,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                         const Icon(Icons.bookmark_add),
                                     onPressed: () {
                                       newsServices.addToBookmarks(
-                                    context: context,
-                                    news: e,
-                                  );
-                                  showAlert(context, AppTexts.addedToBookmarks);
+                                        context: context,
+                                        news: e,
+                                      );
+                                      showAlert(
+                                          context, AppTexts.addedToBookmarks);
                                     },
                                   ),
                                   FocusedMenuItem(
@@ -255,6 +256,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                   image: e.image,
                                   title: e.title,
                                   content: e.content,
+                                  // bookmark: isBookmarked == false
+                                  //     ? const Spc()
+                                  //     : Icon(
+                                  //         Icons.bookmark,
+                                  //         color: AppColors.primaryBlue,
+                                  //       ),
                                   onTap: () {
                                     Navigator.pushNamed(
                                       context,

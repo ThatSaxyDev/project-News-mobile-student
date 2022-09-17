@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:focused_menu/focused_menu.dart';
 import 'package:focused_menu/modals.dart';
@@ -134,7 +135,10 @@ class BookmarksNewsListTile extends StatelessWidget {
               ),
             ],
           ),
-        ),
+        )
+            .animate()
+            .fadeIn(duration: 700.ms)
+            .shimmer(delay: 800.ms, duration: 2000.ms),
       ),
     );
   }

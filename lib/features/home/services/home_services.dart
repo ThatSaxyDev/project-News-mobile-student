@@ -10,7 +10,7 @@ import 'package:project_news_student/shared/utils/error_handling.dart';
 import 'package:provider/provider.dart';
 
 class HomeServices {
-  // get all images
+  // get all news
   Future<List<News>> fetchAllNews(BuildContext context) async {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     List<News> newsList = [];

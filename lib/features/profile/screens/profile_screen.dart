@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
 import 'package:project_news_student/features/auth/services/auth_services.dart';
 import 'package:project_news_student/features/home/services/news_model.dart';
 import 'package:project_news_student/features/home/widgets/news_list_tile.dart';
@@ -53,6 +54,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context).user;
+    final bookmarks = context.watch<UserProvider>().user.bookmarks;
 
     return Scaffold(
       appBar: AppBar(
@@ -110,19 +112,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   AppTexts.bookmarks,
                   style: TextStyle(
                     fontSize: 22.sp,
+                    color: AppColors.primaryBlue,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              Spc(h: 14.h),
-              ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: user.bookmarks.length,
-                itemBuilder: (context, index) {
-                  return BookmarksNewsListTile(index: index);
-                },
-              ),
+              Spc(h: 20.h),
+
+              bookmarks.isEmpty
+                  ? Lottie.asset(
+                      'lib/assets/lottie/nocontent.json',
+                      repeat: false,
+                    )
+                  : ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: user.bookmarks.length,
+                      itemBuilder: (context, index) {
+                        return BookmarksNewsListTile(index: index);
+                      },
+                    ),
             ],
           ),
         ),
