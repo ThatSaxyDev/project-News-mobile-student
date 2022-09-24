@@ -6,6 +6,7 @@ import 'package:project_news_student/features/home/screens/home_screen.dart';
 import 'package:project_news_student/features/news_details/screens/news_details_screen.dart';
 import 'package:project_news_student/features/news_details/screens/news_details_screen2.dart';
 import 'package:project_news_student/features/onboarding/screens/onboarding_screen.dart';
+import 'package:project_news_student/features/search/screen/search_screen.dart';
 import 'package:project_news_student/models/news.dart';
 
 Route<dynamic> generateRoute(RouteSettings routeSettings) {
@@ -51,14 +52,14 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
           news: news,
         ),
       );
-    // case SearchScreen.routeName:
-    //   var searchQuery = routeSettings.arguments as String;
-    //   return MaterialPageRoute(
-    //     settings: routeSettings,
-    //     builder: (_) => SearchScreen(
-    //       searchQuery: searchQuery,
-    //     ),
-    //   );
+    case SearchScreen.routeName:
+      var searchQuery = routeSettings.arguments as String;
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => SearchScreen(
+          searchQuery: searchQuery,
+        ),
+      );
     default:
       return MaterialPageRoute(
         builder: (_) => const Scaffold(

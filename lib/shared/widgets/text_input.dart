@@ -29,6 +29,9 @@ class TextInputBox extends StatelessWidget {
       height: height,
       width: width,
       child: TextFormField(
+        style: TextStyle(
+          fontSize: 19.sp,
+        ),
         controller: controller,
         obscureText: obscuretext,
         cursorColor: Colors.black,

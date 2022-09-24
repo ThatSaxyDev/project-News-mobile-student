@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:project_news_student/shared/app_elements/app_colors.dart';
-import 'package:project_news_student/shared/app_elements/app_texts.dart';
+import 'package:project_news_student/shared/widgets/search_bar.dart';
 
 class CategoriesScreen extends StatefulWidget {
-  const CategoriesScreen({super.key});
+  static const String routeName = '/categories-screen';
+  const CategoriesScreen({Key? key}) : super(key: key);
 
   @override
   State<CategoriesScreen> createState() => _CategoriesScreenState();
@@ -14,27 +15,20 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        elevation: 0.0,
-        backgroundColor: Colors.transparent,
-        title: Text(
-          AppTexts.categoriesHeader,
-          style: TextStyle(
-            color: AppColors.primaryBlue,
-            fontSize: 22.sp,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(60),
+        child: AppBar(
+          backgroundColor: AppColors.primaryBlue,
+          elevation: 0,
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              color: Colors.transparent,
+            ),
           ),
+          title: const SearchBar(),
         ),
-        // actions: [
-        //   IconButton(
-        //     onPressed: () => logOut(context),
-        //     icon: const Icon(
-        //       Icons.logout,
-        //       color: AppColors.primaryBlue,
-        //     ),
-        //   ),
-        // ],
       ),
+      
     );
   }
 }

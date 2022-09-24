@@ -88,14 +88,14 @@ class _HomeScreenState extends State<HomeScreen> {
               .scale(begin: 1.0, end: 1.1, duration: 600.ms) // scale up
               .then(delay: 600.ms) // then wait and
               .scale(begin: 1.0, end: 1 / 1.1),
-          actions: [
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.search,
-                  color: AppColors.neutralWhite,
-                ))
-          ],
+          // actions: [
+          //   IconButton(
+          //       onPressed: () {},
+          //       icon: const Icon(
+          //         Icons.search,
+          //         color: AppColors.neutralWhite,
+          //       ))
+          // ],
         ),
       ),
       body: FutureBuilder(
@@ -183,14 +183,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                 );
                               },
                             )
-                                .animate(
-                                    onPlay: (controller) => controller.repeat())
-                                .scale(
-                                    begin: 1.0,
-                                    end: 1 / 1.005,
-                                    duration: 600.ms) // scale up
-                                .then(delay: 1.ms) // then wait and
-                                .scale(begin: 1.0, end: 1.005),
+                                // .animate(
+                                //     onPlay: (controller) => controller.repeat())
+                                // .scale(
+                                //     begin: 1.0,
+                                //     end: 1 / 1.005,
+                                //     duration: 600.ms) // scale up
+                                // .then(delay: 1.ms) // then wait and
+                                // .scale(begin: 1.0, end: 1.005),
                           );
                         },
                         options: CarouselOptions(
@@ -271,15 +271,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                   },
                                   // onLongPress: () {},
                                 )
-                                    .animate(
-                                        onPlay: (controller) =>
-                                            controller.repeat())
-                                    .scale(
-                                        begin: 1.0,
-                                        end: 1 / 1.005,
-                                        duration: 600.ms) // scale up
-                                    .then(delay: 1.ms) // then wait and
-                                    .scale(begin: 1.0, end: 1.005),
+                                    // .animate(
+                                    //     onPlay: (controller) =>
+                                    //         controller.repeat())
+                                    // .scale(
+                                    //     begin: 1.0,
+                                    //     end: 1 / 1.005,
+                                    //     duration: 600.ms) // scale up
+                                    // .then(delay: 1.ms) // then wait and
+                                    // .scale(begin: 1.0, end: 1.005),
                               ),
                             )
                             .toList()
